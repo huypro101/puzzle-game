@@ -41,29 +41,29 @@ void hoanvi(int& a, int& b) {
     b = temp;
 }
 
-void sapxep(int bang[][SIZE], char huong, int& emptyRow, int& emptyCol) {
-    int newRow = emptyRow;
-    int newCol = emptyCol;
+void sapxep(int bang[][SIZE], char huong, int& hang, int& cot) {
+    int newRow = hang;
+    int newCol = cot;
 
     switch (huong) {
         case 'S': case 's': 
-            newRow = emptyRow - 1;
+            newRow = hang - 1;
             break;
         case 'W': case 'w': 
-            newRow = emptyRow + 1;
+            newRow = hang + 1;
             break;
         case 'D': case 'd': 
-            newCol = emptyCol - 1;
+            newCol = cot - 1;
             break;
         case 'A': case 'a': 
-            newCol = emptyCol + 1;
+            newCol = cot + 1;
             break;
     }
 
     if (newRow >= 0 && newRow < SIZE && newCol >= 0 && newCol < SIZE) {
-        hoanvi(bang[emptyRow][emptyCol], bang[newRow][newCol]);
-        emptyRow = newRow;
-        emptyCol = newCol;
+        hoanvi(bang[hang][cot], bang[newRow][newCol]);
+        hang = newRow;
+        cot = newCol;
     }
 }
 
@@ -90,13 +90,13 @@ void tugiai(int bang[][SIZE]) {
     srand(time(0));
     int moves = rand() % 50 + 50;
 
-    int emptyRow, emptyCol;
+    int hang, cot;
     for (int i = 0; i < moves; ++i) {
         for (int j = 0; j < SIZE; ++j) {
             for (int k = 0; k < SIZE; ++k) {
                 if (bang[j][k] == EMPTY) {
-                    emptyRow = j;
-                    emptyCol = k;
+                    hang = j;
+                    cot = k;
                     break;
                 }
             }
@@ -114,7 +114,7 @@ void tugiai(int bang[][SIZE]) {
     }
 }
 
-void ketthuc(int bang[][SIZE], int& emptyRow, int& emptyCol) {
+void ketthuc(int bang[][SIZE], int& hang, int& cot) {
     int tile = 1;
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
@@ -124,8 +124,8 @@ void ketthuc(int bang[][SIZE], int& emptyRow, int& emptyCol) {
             }
         }
     }
-    emptyRow = SIZE - 1;
-    emptyCol = SIZE - 1;
+    hang = SIZE - 1;
+    cot = SIZE - 1;
 }
 
 void sapxeptheothutu(int bang[][SIZE]) {
@@ -141,7 +141,7 @@ void sapxeptheothutu(int bang[][SIZE]) {
 
 int main() {
     int bang[SIZE][SIZE];
-    int emptyRow, emptyCol;
+    int hang, cot;
 
     taonbangngaunhien(bang);
     tugiai(bang);
@@ -149,8 +149,8 @@ int main() {
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
             if (bang[i][j] == EMPTY) {
-                emptyRow = i;
-                emptyCol = j;
+                hang = i;
+                cot = j;
             }
         }
     }
@@ -159,7 +159,7 @@ int main() {
         taobang(bang);
 
         if (kiemtra(bang)) {
-            cout << "Congratulations! You've solved the puzzle." << endl;
+            cout << "Chuc mung! Ban da vuot qua tro choi" << endl;
             break;
         }
 
@@ -167,12 +167,12 @@ int main() {
         char move = _getch();
 
         if (move == 'Z' || move == 'z') {
-            ketthuc(bang, emptyRow, emptyCol);
+            ketthuc(bang, hang, cot);
             break;
         } else if (move == 'O' || move == 'o') {
             sapxeptheothutu(bang);
         } else {
-            sapxep(bang, move, emptyRow, emptyCol);
+            sapxep(bang, move, hang, cot);
         }
     }
 
