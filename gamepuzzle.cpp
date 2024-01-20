@@ -110,7 +110,7 @@ void tugiai(int bang[][SIZE]) {
             case 3: huong = 'D'; break;
         }
 
-        sapxep(bang, huong, emptyRow, emptyCol);
+        sapxep(bang, huong, hang, cot);
     }
 }
 
