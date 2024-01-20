@@ -86,7 +86,7 @@ void taonbangngaunhien(int bang[][SIZE]) {
     }
 }
 
-void makesol(int bang[][SIZE]) {
+void tugiai(int bang[][SIZE]) {
     srand(time(0));
     int moves = rand() % 50 + 50;
 
@@ -144,7 +144,7 @@ int main() {
     int emptyRow, emptyCol;
 
     taonbangngaunhien(bang);
-    makesol(bang);
+    tugiai(bang);
 
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
