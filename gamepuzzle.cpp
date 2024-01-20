@@ -163,7 +163,7 @@ int main() {
             break;
         }
 
-        cout << "Su dung ' W , A , D , S' de di chuyen. Nhan 'Z' de ket thuc chuong trinh. Nhan 'O'de tu dong sap xep ";
+        cout << "Su dung ' W , A , D , S' de di chuyen. Nhan 'O' de ket thuc chuong trinh. Nhan 'Z'de tu dong sap xep ";
         char move = _getch();
 
         if (move == 'Z' || move == 'z') {
